@@ -28,3 +28,5 @@ clients, structured in the following modules:
     - Module 6: Marketing 
     - Module 7: Social and Community Context
     - Module 8: Demographics
+
+- Project Complete Information: [MSI-Client-Exit-Interview-Toolkit](../docs/MSI-Client-Exit-Interview-Toolkit.pdf)
