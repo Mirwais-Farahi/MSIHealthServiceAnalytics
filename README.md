@@ -55,6 +55,44 @@ This project aims to analyze the Client Exit Interview (CEI) data from 11 provin
     - `numpy` for numerical operations.
     - `scipy` for statistical analysis.
 
+## Usage
+
+### Software Requirements
+- **Google Colab** (Recommended): Google Colab allows you to run Jupyter Notebooks directly in the cloud without any setup.
+- **Local Jupyter Notebook**: Alternatively, you can run the notebook on your local machine if you have Jupyter installed.
+    - Install Jupyter using Anaconda or via `pip`:
+
+    ```bash
+    pip install notebook
+    ```
+
+### Steps to Run
+
+1. **Open the Jupyter Notebook**:
+    - Open the notebook in [Google Colab](https://colab.research.google.com/) (recommended).
+    - Or open it locally using Jupyter Notebook.
+
+2. **Install Required Libraries**:
+    - If running locally, ensure the following libraries are installed. You can install them using pip:
+
+    ```bash
+    pip install pandas matplotlib seaborn numpy scipy
+    ```
+
+3. **Upload and Load Your Data**:
+    - Upload your CEI data (e.g., CSV file) into Google Colab or your local Jupyter Notebook environment.
+    - Ensure your data contains the necessary columns (e.g., `EDU`, `Count`, etc.).
+
+4. **Run the Notebook Cells**:
+    - Execute the cells in the notebook sequentially to clean, analyze, and visualize the data.
+    - Each section of the notebook will guide you through the analysis process, from data cleaning to visualization.
+
+5. **Visualize Results**:
+    - The analysis will generate charts, graphs, and statistical summaries. Review these outputs to gain insights into client satisfaction and service accessibility.
+
+6. **Refine and Share Insights**:
+    - Based on the results, you can refine the analysis, present findings to stakeholders, and generate actionable recommendations to improve family planning services.
+
 ## Conclusion
 
 This project provides a data-driven approach to understanding client experiences with family planning services in Afghanistan. By analyzing CEI data, stakeholders can gain valuable insights that will inform decisions to enhance the accessibility, quality, and satisfaction of services provided in the provinces.
