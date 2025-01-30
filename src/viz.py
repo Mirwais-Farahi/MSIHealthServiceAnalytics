@@ -99,3 +99,13 @@ def plot_bar_chart_with_percentage(data, category_column, count_column, colors):
 
     # Show the plot
     plt.show()
+
+
+# Function to calculate percentage table
+def calculate_percentage_table(data, column):
+    """Calculate response percentages for a given column."""
+    total_responses = data.shape[0]
+    percentage_table = data.groupby(column).size().reset_index(name='Count')
+    percentage_table['Percentage'] = (percentage_table['Count'] / total_responses) * 100
+    percentage_table = percentage_table.rename(columns={'Percentage': f'% of beneficiaries for {column}'})
+    return percentage_table
