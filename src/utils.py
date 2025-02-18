@@ -51,22 +51,22 @@ def null_columns(data):
 
     return data.columns[is_null_column]
 
-def summary_percentage_table(data, variable_list, question_mapping, regions_column='REGION', regions=None):
+def summary_percentage_table(data, variable_list, question_mapping, channels_column='channels', channels=None):
     """
-    Generate a summary table with percentages for each question grouped by regions.
+    Generate a summary table with percentages for each question grouped by channels.
 
     Parameters:
     - data: pd.DataFrame, the dataset containing the questions, answers, and region information.
     - variable_list: list of str, the list of questions (column names) to analyze.
     - question_mapping: dict, a mapping of variable names to full question text.
-    - regions_column: str, the column name representing regions in the dataset (default: 'REGION').
-    - regions: list of str, the list of regions to include in the analysis (default: unique values in the regions column).
+    - channels_column: str, the column name representing channels in the dataset (default: 'REGION').
+    - channels: list of str, the list of channels to include in the analysis (default: unique values in the channels column).
 
     Returns:
     - pd.DataFrame, the summary table.
     """
-    if regions is None:
-        regions = data[regions_column].unique()  # Get unique regions if not provided
+    if channels is None:
+        channels = data[channels_column].unique()  # Get unique channels if not provided
 
     # Initialize a list to store the result rows
     results = []
@@ -87,8 +87,8 @@ def summary_percentage_table(data, variable_list, question_mapping, regions_colu
             region_percentages = []
 
             # Calculate percentage for each region
-            for region in regions:
-                region_data = data[data[regions_column] == region]
+            for region in channels:
+                region_data = data[data[channel_column] == region]
                 total_region = len(region_data)
                 answer_count = (region_data[question] == answer).sum()
                 percentage = (answer_count / total_region) * 100 if total_region > 0 else 0
