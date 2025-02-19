@@ -51,7 +51,7 @@ def null_columns(data):
 
     return data.columns[is_null_column]
 
-def summary_percentage_table(data, variable_list, question_mapping, channels_column='channels', channels=None):
+def summary_percentage_table(data, variable_list, question_mapping, channels_column, channels=None):
     """
     Generate a summary table with percentages for each question grouped by channels.
 
@@ -59,7 +59,7 @@ def summary_percentage_table(data, variable_list, question_mapping, channels_col
     - data: pd.DataFrame, the dataset containing the questions, answers, and region information.
     - variable_list: list of str, the list of questions (column names) to analyze.
     - question_mapping: dict, a mapping of variable names to full question text.
-    - channels_column: str, the column name representing channels in the dataset (default: 'REGION').
+    - channels_column: str, the column name representing channels in the dataset.
     - channels: list of str, the list of channels to include in the analysis (default: unique values in the channels column).
 
     Returns:
@@ -84,23 +84,23 @@ def summary_percentage_table(data, variable_list, question_mapping, channels_col
             }
 
             # Initialize a list to store the percentages for each region
-            region_percentages = []
+            channel_percentages = []
 
             # Calculate percentage for each region
-            for region in channels:
-                region_data = data[data[channel_column] == region]
-                total_region = len(region_data)
-                answer_count = (region_data[question] == answer).sum()
-                percentage = (answer_count / total_region) * 100 if total_region > 0 else 0
+            for channel in channels:
+                channel_data = data[data[channels_column] == channel]
+                total_channels = len(channel_data)
+                answer_count = (channel_data[question] == answer).sum()
+                percentage = (answer_count / total_channels) * 100 if total_channels > 0 else 0
 
                 # Store the percentage for the region
-                row[region] = f"{percentage:.2f}%"
+                row[channel] = f"{percentage:.2f}%"
 
                 # Accumulate the percentage for the total row
-                region_percentages.append(percentage)
+                channel_percentages.append(percentage)
 
             # Calculate the average percentage for the total row
-            row["Total"] = f"{sum(region_percentages) / len(region_percentages):.2f}%" if region_percentages else "0.00%"
+            row["Total"] = f"{sum(channel_percentages) / len(channel_percentages):.2f}%" if channel_percentages else "0.00%"
 
             # Append the row to results
             results.append(row)
